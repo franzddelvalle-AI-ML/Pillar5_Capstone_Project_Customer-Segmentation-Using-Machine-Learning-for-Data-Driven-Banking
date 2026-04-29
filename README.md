@@ -131,6 +131,22 @@ Make sure `BankChurners.csv` is in the same directory.
 * Apply SHAP or feature importance for explainability
 * Deploy as dashboard or API
 
+## 📊 Data Dictionary
+
+| Feature                  | Type        | Description                       | Example / Range                |
+| ------------------------ | ----------- | --------------------------------- | ------------------------------ |
+| Customer_Age             | Numerical   | Age of the customer               | 26 – 73                        |
+| Gender                   | Categorical | Customer gender                   | Male, Female                   |
+| Dependent_count          | Numerical   | Number of dependents              | 0 – 5                          |
+| Education_Level          | Categorical | Highest education attained        | Graduate, High School, Unknown |
+| Marital_Status           | Categorical | Marital status of customer        | Married, Single, Divorced      |
+| Income_Category          | Categorical | Annual income bracket             | <40K, 40K–60K, 60K–80K, etc.   |
+| Card_Category            | Categorical | Type of credit card               | Blue, Silver, Gold, Platinum   |
+| Months_on_book           | Numerical   | Duration as a customer (months)   | 13 – 56                        |
+| Total_Relationship_Count | Numerical   | Number of bank products held      | 1 – 6                          |
+| Months_Inactive_12_mon   | Numerical   | Months inactive in last 12 months | 0 – 6                          |
+| Contacts_Count_12        |             |                                   |                                |
+
 ---
 
 ## 👤 Author
