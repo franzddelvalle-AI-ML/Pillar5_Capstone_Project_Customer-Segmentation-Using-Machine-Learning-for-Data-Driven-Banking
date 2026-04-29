@@ -95,8 +95,122 @@ Customer segmentation must be used responsibly:
 * Ensure transparency in segmentation logic
 * Protect customer data privacy
 * Monitor for unfair targeting or exclusion
+## ⚖️ Fairness Audit Results
+
+A fairness audit was conducted to assess whether the clustering model exhibits potential bias across demographic groups such as **Gender** and **Income Category**.
+
+### 📊 Cluster Distribution by Gender
+
+Analysis of the cluster distribution shows **clear imbalance across gender groups**.
+
+* **Cluster 0 and Cluster 1** are dominated by **male customers**
+* **Cluster 2 and Cluster 3** are dominated by **female customers**
+
+As shown in the visualization  (page 1), Cluster 3 contains a significantly higher proportion of female customers compared to males.
+
+### 🔍 Interpretation
+
+This suggests that:
+
+* The clustering model is capturing **behavioral differences correlated with gender**
+* However, it may also reflect **implicit bias in feature patterns**
+
+⚠️ **Risk:**
+
+* If used in decision-making (e.g., marketing, credit targeting), this may lead to **unequal treatment across genders**
 
 ---
+
+### 📊 Cluster Distribution by Income Category
+
+From the income distribution chart  (page 2):
+
+* **Higher-income groups ($80K–$120K and $120K+) are concentrated in specific clusters**
+* **Lower-income groups (<$40K)** dominate other clusters
+
+### 🔍 Interpretation
+
+* Clusters are strongly influenced by **income segmentation**
+* This is expected in financial behavior modeling
+* However, it introduces potential **economic bias in segmentation**
+
+⚠️ **Risk:**
+
+* Certain customer segments may be unfairly prioritized or excluded based on income
+
+---
+
+### ⚖️ Fairness Summary
+
+* Clusters are **not demographically neutral**
+* Observable skew exists across:
+
+  * Gender
+  * Income
+
+👉 The model reflects **real-world behavioral differences**, but also introduces **potential bias risks** if used operationally.
+
+---
+
+## 🔍 Model Interpretability (SHAP Analysis)
+
+To understand how features influence clustering behavior, **SHAP (SHapley Additive exPlanations)** was applied to the K-Means model.
+
+### 📊 SHAP Summary Plot (Cluster 0)
+
+The SHAP summary plot  (page 4) shows the **impact of PCA components (PC features)** on cluster assignment.
+
+### 🔍 Key Observations
+
+* **PC_0, PC_16, and PC_1** are the most influential features
+* Both **high and low feature values** contribute differently to cluster assignment
+* The spread of SHAP values indicates **non-linear relationships captured by clustering**
+
+---
+
+### 🧠 Interpretation
+
+* The model does not rely on a single feature, but rather a **combination of transformed features (PCA components)**
+* PCA compresses original variables, so:
+
+  * Each principal component represents a mix of:
+
+    * Credit behavior
+    * Transaction activity
+    * Demographics
+
+👉 This makes interpretation more complex but also more powerful
+
+---
+
+### ⚠️ Limitation of SHAP in Clustering
+
+* SHAP is traditionally used for supervised models
+* In K-Means:
+
+  * It explains **distance to cluster centroids**, not predictions
+* Therefore:
+
+  * Interpretations are **approximate but still useful**
+
+---
+
+## 🚨 Key Takeaway
+
+* The clustering model is **data-driven and effective for segmentation**
+* However:
+
+  * It shows **demographic imbalance**
+  * And relies on **latent feature representations (PCA)**
+
+👉 This reinforces the need for:
+
+* Responsible use
+* Fairness monitoring
+* Business-aware deployment
+
+---
+
 
 ## 🚀 How to Run the Project
 
@@ -128,7 +242,6 @@ Make sure `BankChurners.csv` is in the same directory.
 * Add **Davies-Bouldin Index evaluation**
 * Perform **bias and fairness analysis**
 * Improve clustering using advanced methods (GMM, Spectral)
-* Apply SHAP or feature importance for explainability
 * Deploy as dashboard or API
 
 ## 📊 Data Dictionary
